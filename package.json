@@ -21,6 +21,7 @@
     "serve": "gatsby serve -H 0.0.0.0 -p 8123",
     "set-env-prod": "cross-env NODE_ENV=production && cross-env CI=true && cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true",
     "start": "node ./expressSrc/index.js",
+    "start:dev": "nodemon ./expressSrc/index.js",
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "express": "4.17.1",
     "express-validator": "6.9.2",
     "lowdb": "1.0.0",
+    "swagger-jsdoc": "6.0.1",
     "uuid": "8.3.2"
   },
   "devDependencies": {
@@ -36,5 +38,10 @@
     "nodemon": "2.0.7",
     "prettier": "2.2.1",
     "supertest": "6.0.1"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "expressSrc"
+    ]
   }
 }

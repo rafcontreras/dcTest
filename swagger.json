@@ -1,0 +1,242 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API for shopping list",
+    "version": "1.0.0",
+    "description": "This is a REST API application made with Express. It retrieves data from a JSON database.",
+    "license": {
+      "name": "Licensed Under MIT",
+      "url": "https://spdx.org/licenses/MIT.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3300",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Returns the homepage",
+        "responses": {
+          "200": {
+            "description": "Hello world"
+          }
+        }
+      }
+    },
+    "/api/v1/shopping-list": {
+      "get": {
+        "summary": "Retrieve a shopping list.",
+        "description": "Retrieve a shopping list of items. Can be used to populate a list of fake users when prototyping or testing an API.",
+        "responses": {
+          "200": {
+            "description": "A list of users.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Items"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shopping-list/item": {
+      "post": {
+        "summary": "Create a shopping list item.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsAndItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shopping-list/item/{itemId}": {
+      "put": {
+        "summary": "Edit a shopping list item.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "description": "Unique Id of item to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsAndItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get a shopping list item.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "description": "Unique Id of item to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Items"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a shopping list item.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "description": "Unique Id of item to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsAndItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Items": {
+        "type": "object",
+        "description": "Shopping list",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "The shopping list item title.",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          }
+        }
+      },
+      "NewItem": {
+        "type": "object",
+        "description": "Shopping list item",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The shopping list item title.",
+            "example": "Milk"
+          }
+        }
+      },
+      "Item": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "itemId": {
+                "type": "string",
+                "description": "The item ID.",
+                "example": "63293f2c-1086-4821-961b-8a08aaf2c74a"
+              },
+              "completed": {
+                "type": "boolean",
+                "description": "The item has been completed or not.",
+                "example": false
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/NewItem"
+          }
+        ]
+      },
+      "ItemsAndItem": {
+        "type": "object",
+        "description": "Shopping list",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/Item"
+          }
+        },
+        "allOf": [
+          {
+            "type": "object"
+          },
+          {
+            "$ref": "#/components/schemas/Items"
+          }
+        ]
+      }
+    }
+  },
+  "tags": []
+}
