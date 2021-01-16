@@ -2,7 +2,7 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const saveFile = require("../../shared/saveFile");
 
 const PORT = process.env.PORT || 3300;
-const savePath = "./"
+const savePath = "./gatsbySrc/data/"
 
 const createDocs = async () => {
   const swaggerDefinition = {
