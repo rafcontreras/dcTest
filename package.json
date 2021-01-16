@@ -1,0 +1,40 @@
+{
+  "name": "dc-test",
+  "version": "1.0.0",
+  "description": "Test for David Clark Designs",
+  "main": "index.js",
+  "repository": "git@github.com:rafcontreras/dcTest.git",
+  "author": "Rafael Contreras <rafael.contreras@cashconverters.co.nz>",
+  "license": "CC0",
+  "private": true,
+  "scripts": {
+    "build": "yarn pre-build && yarn set-env-prod && node ./scripts/build-for-production",
+    "clean": "gatsby clean",
+    "develop": "concurrently \"gatsby develop -H 0.0.0.0 -p 8000\" \"yarn serve:dev\" ",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,scss}\"",
+    "lint:fix": "yarn --silent lint --fix; exit 0",
+    "lint:styles-fix": "yarn --silent lint:styles --fix; exit 0",
+    "lint:styles": "stylelint --ignore-path .eslintignore \"./src/**/*.*(css|scss)\" --syntax scss",
+    "pre-build": "node ./scripts/prebuild-for-production",
+    "pretest": "cross-env NODE_ENV=test",
+    "serve:dev": "cd ./publish && yarn serve:dev",
+    "serve": "gatsby serve -H 0.0.0.0 -p 8123",
+    "set-env-prod": "cross-env NODE_ENV=production && cross-env CI=true && cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true",
+    "start": "node ./expressSrc/index.js",
+    "test": "jest --detectOpenHandles"
+  },
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "express-validator": "6.9.2",
+    "lowdb": "1.0.0",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "jest": "26.6.3",
+    "nodemon": "2.0.7",
+    "prettier": "2.2.1",
+    "supertest": "6.0.1"
+  }
+}
