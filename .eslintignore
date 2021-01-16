@@ -1,0 +1,8 @@
+.cache/*
+build/*
+dist/*
+compress/*
+public/*
+node_modules/*
+static/js/*
+static/css/*

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const lowdb = require("lowdb");
 const FileAsync = require("lowdb/adapters/FileAsync");
 const dbFile = process.env.NODE_ENV === "test" ? "itemsTest" : "items";

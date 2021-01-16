@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules/*",
+    "public/*",
+    "local_modules/*",
+    "publish/*",
+    "static/*",
+    "./cache/*"
+  ]
+}

@@ -1,0 +1,13 @@
+.nzMap {
+  padding: 1rem;
+
+  .nzRegion {
+    fill: $base-lighter-color;
+  }
+}
+
+.nzMapOverlay {
+  .nzRegionOverlay {
+    fill: $base-lighter-color;
+  }
+}

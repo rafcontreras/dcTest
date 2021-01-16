@@ -1,7 +1,7 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 const saveFile = require("../../shared/saveFile");
 
-const PORT = process.env.PORT || 3300;
+const PORT = process.env.NODE_ENV === "production" ? 8000 : 3300;
 const savePath = "./src/data/"
 
 const createDocs = async () => {
