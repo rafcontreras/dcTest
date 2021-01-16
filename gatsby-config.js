@@ -13,7 +13,18 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-preact",
-    "gatsby-plugin-sass",
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        postCssPlugins: [require("tailwindcss")("./tailwind.config.js")]
+      }
+    },
+    {
+      resolve: "gatsby-plugin-purgecss",
+      options: {
+        tailwind: true
+      }
+    },
     "gatsby-plugin-layout",
     {
       resolve: "gatsby-plugin-manifest",

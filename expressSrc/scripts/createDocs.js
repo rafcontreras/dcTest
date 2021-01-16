@@ -2,7 +2,7 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const saveFile = require("../../shared/saveFile");
 
 const PORT = process.env.NODE_ENV === "production" ? 8000 : 3300;
-const savePath = "./src/data/"
+const savePath = "./src/data/";
 
 const createDocs = async () => {
   const swaggerDefinition = {
@@ -33,7 +33,6 @@ const createDocs = async () => {
   const swaggerSpec = swaggerJSDoc(options);
 
   await saveFile(swaggerSpec, `${savePath}swagger.json`);
-
 };
 
 module.exports = createDocs;

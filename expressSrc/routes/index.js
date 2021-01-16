@@ -44,7 +44,7 @@ router.get("/*", (req, res, next) => {
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Items'
-*/
+ */
 router.get("/api/v1/shopping-list", validateRequest, getItems);
 
 /**
@@ -65,7 +65,7 @@ router.get("/api/v1/shopping-list", validateRequest, getItems);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
-*/
+ */
 router.post(
   "/api/v1/shopping-list/item",
   sanitizeRequest,
@@ -99,7 +99,7 @@ router.post(
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
-*/
+ */
 router.put(
   "/api/v1/shopping-list/item/:itemId",
   sanitizeRequest,
@@ -129,7 +129,7 @@ router.put(
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Items'
-*/
+ */
 router.get(
   "/api/v1/shopping-list/item/:itemId",
   sanitizeRequest,
@@ -162,7 +162,7 @@ router.get(
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
-*/
+ */
 router.delete(
   "/api/v1/shopping-list/item/:itemId",
   sanitizeRequest,
