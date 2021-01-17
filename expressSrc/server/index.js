@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const routes = require("../routes");
+const isProd = process.env.NODE_ENV === "production";
 
-const PORT = 3300;
+const PORT = isProd ? 8000 : 3300;
 
 const createHttpServer = () => {
   const app = express();

@@ -2,15 +2,6 @@
  * @swagger
  * components:
  *   schemas:
- *     Items:
- *       type: object
- *       description: Shopping list
- *       properties:
- *         items:
- *           type: array
- *           description: A list of items.
- *           items:
- *             $ref: '#/components/schemas/Item'
  *     NewItem:
  *       type: object
  *       description: Shopping list item
@@ -32,6 +23,15 @@
  *               description: The item has been completed or not.
  *               example: false
  *         - $ref: '#/components/schemas/NewItem'
+ *     Items:
+ *       type: object
+ *       description: Shopping list
+ *       properties:
+ *         items:
+ *           type: array
+ *           description: A list of items.
+ *           items:
+ *             $ref: '#/components/schemas/Item'
  *     ItemsAndItem:
  *       type: object
  *       description: Shopping list

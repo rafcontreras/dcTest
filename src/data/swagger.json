@@ -223,19 +223,6 @@
   },
   "components": {
     "schemas": {
-      "Items": {
-        "type": "object",
-        "description": "Shopping list",
-        "properties": {
-          "items": {
-            "type": "array",
-            "description": "A list of items.",
-            "items": {
-              "$ref": "#/components/schemas/Item"
-            }
-          }
-        }
-      },
       "NewItem": {
         "type": "object",
         "description": "Shopping list item",
@@ -268,6 +255,19 @@
             "$ref": "#/components/schemas/NewItem"
           }
         ]
+      },
+      "Items": {
+        "type": "object",
+        "description": "Shopping list",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "A list of items.",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            }
+          }
+        }
       },
       "ItemsAndItem": {
         "type": "object",

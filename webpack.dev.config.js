@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const NodemonPlugin = require("nodemon-webpack-plugin");
 
 module.exports = {
@@ -23,6 +24,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [new NodemonPlugin()],
+  plugins: [
+    new NodemonPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("development")
+    })
+  ],
   watch: path.resolve("./expressSrc")
 };
