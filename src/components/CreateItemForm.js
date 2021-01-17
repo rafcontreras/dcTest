@@ -9,25 +9,14 @@ const createItemForm = new FormConstructor(
   { name: "createItemForm" }
 );
 
-const CreateItemForm = ({
-  store,
-  store: {
-    forms
-  }
-}) => {
-
+const CreateItemForm = ({ store, store: { forms } }) => {
   useEffect(() => {
     if (!forms?.createItemForm) {
       store.setForm("createItemForm", createItemForm);
     }
   });
 
-  return (
-    <Form
-      fields={itemInputs}
-      form={createItemForm}
-    />
-  );
+  return <Form fields={itemInputs} form={createItemForm} />;
 };
 
 export default inject("store")(observer(CreateItemForm));

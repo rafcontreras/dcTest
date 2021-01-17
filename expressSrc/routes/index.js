@@ -25,7 +25,7 @@ const router = Router();
  *     description: Returns the homepage
  *     responses:
  *       200:
- *         description: Hello world
+ *         description: Homepage for the Shopping List
  */
 router.get("/*", (request, response, next) => {
   next();

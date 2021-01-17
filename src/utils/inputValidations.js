@@ -7,6 +7,4 @@ const isRequired = ({ field }) => {
   return [disabled];
 };
 
-export {
-  isRequired
-}
+export { isRequired };
