@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "gatsby";
 import { observer, inject } from "mobx-react";
 import ListItem from "../components/ListItem";
 import CreateItemForm from "../components/CreateItemForm";
@@ -28,9 +29,12 @@ const Index = ({
                 ))}
             </div>
             <div className="block bg-gray-200 text-sm text-right py-2 px-3 -mx-3 -mb-2 rounded-b-lg">
-              <button className="hover:text-gray-600 hover:border-gray-600 border border-gray-400 text-gray-500 py-1 px-2 rounded">
-                Settings
-              </button>
+              <Link
+                className="hover:text-gray-600 hover:border-gray-600 border border-gray-400 text-gray-500 py-1 px-2 rounded"
+                to="/api-documentation"
+              >
+                API Documentation
+              </Link>
             </div>
           </div>
         </div>

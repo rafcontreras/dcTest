@@ -27,7 +27,7 @@ const router = Router();
  *       200:
  *         description: Hello world
  */
-router.get("/*", (req, res, next) => {
+router.get("/*", (request, response, next) => {
   next();
 });
 

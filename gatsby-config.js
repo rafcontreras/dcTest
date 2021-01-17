@@ -22,7 +22,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-purgecss",
       options: {
-        tailwind: true
+        tailwind: true,
+        ignore: ["swagger-ui-react/swagger-ui.css"]
       }
     },
     "gatsby-plugin-layout",
