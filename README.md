@@ -1,5 +1,5 @@
 <div align="center">
-  <strong>Coding Test from Rafael Contreras 🎣</strong>
+  <strong>Coding Test from Rafael Contreras 🐶</strong>
   <br />
   <br />
   <img
