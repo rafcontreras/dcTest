@@ -40,7 +40,7 @@ const updateItem = async (request, response) => {
 
     if (edited) {
       const { items } = await allItems();
-      return response.status(200).json({ items, item });
+      return response.status(200).send({ items, item });
     }
 
     return response.sendStatus(500);
@@ -56,8 +56,8 @@ const deleteItem = async (request, response) => {
     const deleted = await remove(itemId);
 
     if (deleted) {
-      const items = await allItems();
-      return response.status(200).json({ items, item });
+      const { items } = await allItems();
+      return response.status(200).send({ items, item });
     }
 
     return response.sendStatus(500);

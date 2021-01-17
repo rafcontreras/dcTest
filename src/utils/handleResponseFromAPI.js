@@ -1,10 +1,9 @@
-const handleResponseFromAPI = (response, name) => {
-  const object = { [name]: null };
+const handleResponseFromAPI = (response) => {
   const { data, isOK } = response;
   if (data && isOK) {
-    object[name] = data;
+    return data;
   }
-  return object;
+  return null;
 };
 
 export default handleResponseFromAPI;

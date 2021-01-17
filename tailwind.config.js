@@ -2,10 +2,14 @@ module.exports = {
   purge: [],
   darkMode: false,
   theme: {
-    extend: {}
+    lineClamp: {
+      1: 1,
+      2: 2,
+      3: 3
+    }
   },
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [require("tailwindcss-line-clamp")]
 };

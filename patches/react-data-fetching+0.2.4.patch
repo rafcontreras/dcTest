@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-data-fetching/esm/react-data-fetching.js b/node_modules/react-data-fetching/esm/react-data-fetching.js
+index 2b355cb..1c79b5f 100644
+--- a/node_modules/react-data-fetching/esm/react-data-fetching.js
++++ b/node_modules/react-data-fetching/esm/react-data-fetching.js
+@@ -1982,7 +1982,7 @@ var requestToApi = function requestToApi(args) {
+         request.open(method === 'FORM_DATA' ? 'POST' : method, route);
+         request.timeout = timeout;
+         setHeaders(request);
+-        request.send(method === 'FORM_DATA' ? formData : method === 'DELETE' || method === 'GET' || method === 'HEAD' || method === 'PUT' ? null : JSON.stringify(_extends({}, body)));
++        request.send(method === 'FORM_DATA' ? formData : method === 'DELETE' || method === 'GET' || method === 'HEAD' ? null : JSON.stringify(_extends({}, body)));
+       } catch (request) {
+         handleError(request, request, reject);
+       }

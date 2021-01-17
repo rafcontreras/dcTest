@@ -1,28 +1,43 @@
 import { observable, action } from "mobx";
 import testLocalStorage from "./storeUtils/testLocalStorage";
 import {
-  getDashboardData,
-  setDashboardData,
-  resetDashboardData
-} from "./storeUtils/dashboardDataFunctions";
+  getShoppingListItems,
+  addShoppingListItem,
+  editShoppingListItem,
+  setShoppingListItems,
+  removeShoppingListItem,
+  resetShoppingListItems
+} from "./storeUtils/shoppingListDataFunctions";
 import { localStored } from "../utils/mobxStorageHydration";
 
 const windowExists = typeof window === "object";
 const storageAvailable = windowExists ? testLocalStorage() : false;
-const dashboardData = {};
+const shoppingListData = {};
+
+const ui = {
+  gettingItems: false
+};
+
+const forms = {
+  createItemForm: null,
+  editForm: null
+};
 
 class Store {
-  @observable dashboardData;
-  // @observable dashboardWorker;
+  @observable shoppingListData;
   @observable loaded;
+  @observable ui;
+  @observable forms;
 
   constructor() {
-    this.dashboardData = localStored({
-      key: "dashboardData",
-      defaultValue: dashboardData,
+    this.ui = ui;
+    this.forms = forms;
+    this.loaded = false;
+    this.shoppingListData = localStored({
+      key: "shoppingListData",
+      defaultValue: shoppingListData,
       storageAvailable
     });
-    this.loaded = false;
   }
 
   @action
@@ -31,13 +46,42 @@ class Store {
   }
 
   @action
-  getDashboardData = getDashboardData.bind(this);
+  setForm = (property, value) => {
+    this.forms[property] = value;
+  };
 
   @action
-  setDashboardData = setDashboardData.bind(this);
+  setUI(prop, val) {
+    this.ui[prop] = val;
+  }
 
   @action
-  resetDashboardData = resetDashboardData.bind(this);
+  setUI(prop, val) {
+    this.ui[prop] = val;
+  }
+
+  @action
+  resetUI() {
+    this.ui = ui;
+  }
+
+  @action
+  getShoppingListItems = getShoppingListItems.bind(this);
+
+  @action
+  editShoppingListItem = editShoppingListItem.bind(this);
+
+  @action
+  addShoppingListItem = addShoppingListItem.bind(this);
+
+  @action
+  removeShoppingListItem = removeShoppingListItem.bind(this);
+
+  @action
+  setShoppingListItems = setShoppingListItems.bind(this);
+
+  @action
+  resetShoppingListItems = resetShoppingListItems.bind(this);
 }
 
 const store = new Store();

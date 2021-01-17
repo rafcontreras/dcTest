@@ -1,6 +1,6 @@
 const siteUrl = "https://localhost:8000";
 
-const PORT = process.env.NODE_ENV === "production" ? 3300 : 8000;
+const PORT = process.env.NODE_ENV === "production" ? 8000 : 3300;
 
 module.exports = {
   siteMetadata: {
