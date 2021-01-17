@@ -1,3 +1,9 @@
 {
-  "items": []
+  "items": [
+    {
+      "title": "Coke",
+      "itemId": "24af048a-dc23-467f-97c6-a09bc0a1d8b5",
+      "completed": true
+    }
+  ]
 }

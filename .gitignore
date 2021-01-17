@@ -44,4 +44,4 @@ node_modules/
 
 # Gatsby files
 .cache/
-public/
+public
