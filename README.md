@@ -65,12 +65,12 @@ $ npm run start
 ```
 
 This will build the server and website, and serve the application on
-[http://localhost:3300](http://localhost:3300)
+[http://localhost:8000](http://localhost:8000)
 
 ### API Documentation
 
 The API documentation will be available at
-[http://localhost:3300/api-docs](http://localhost:3300/api-docs)
+[http://localhost:8000/api-docs](http://localhost:8000/api-docs)
 
 #
 
