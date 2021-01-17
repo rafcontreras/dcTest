@@ -2,8 +2,13 @@
   "items": [
     {
       "title": "Coke",
-      "itemId": "24af048a-dc23-467f-97c6-a09bc0a1d8b5",
-      "completed": true
+      "itemId": "33067b41-6a62-4bea-9af9-05cf949ceb09",
+      "completed": false
+    },
+    {
+      "title": "Sprite",
+      "itemId": "aaccc279-e08d-435a-9099-f42fa9374c92",
+      "completed": false
     }
   ]
 }

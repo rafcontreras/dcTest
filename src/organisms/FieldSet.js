@@ -17,14 +17,23 @@ const FieldSet = ({
           .map(input => {
             const { type, name: fieldName, extra } = input;
             const field = form.$(fieldName);
-            const { error } = field;
             return (
               <Fragment key={`${formName}${fieldName}`}>
                 {type === "text" && (
                   <div className="rounded-md">
                     <input
                       {...field.bind()}
-                      className="w-full rounded-md bg-gray-200 text-gray-700 leading-tight py-2 px-2"
+                      className="
+                        dark:bg-gray-400
+                        dark:text-gray-800
+                        bg-gray-200
+                        leading-tight
+                        px-2
+                        py-2
+                        rounded-md
+                        text-gray-700
+                        w-full
+                      "
                       disabled={gettingItems}
                       {...extra?.inputProps}
                     />

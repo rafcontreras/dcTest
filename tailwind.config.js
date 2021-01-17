@@ -1,6 +1,6 @@
 module.exports = {
   purge: false,
-  darkMode: false,
+  darkMode: "media",
   theme: {
     lineClamp: {
       1: 1,
