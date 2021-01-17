@@ -48,8 +48,4 @@
  *     in: formData
  *     required: true
  *     type: string
- * securitySchemes:
- *   basicAuth:
- *     type: http
- *     scheme: basic
  */
