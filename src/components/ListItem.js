@@ -97,7 +97,6 @@ const ListItem = ({
             px-2
             py-1
             rounded
-            rounded-r-none
             text-gray-700
             transition
           "

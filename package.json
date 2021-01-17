@@ -8,21 +8,21 @@
   "license": "CC0",
   "private": true,
   "scripts": {
-    "build": "yarn env:prod && yarn gatsby:build",
-    "develop": "concurrently \"yarn serve:develop\" \"yarn gatsby:develop\" ",
+    "api-server:build": "webpack --config webpack.config.js",
+    "api-server:develop": "nodemon ./expressSrc/index.js",
+    "build": "yarn env:prod && yarn docs:build && yarn gatsby:build && yarn api-server:build",
+    "coverage": "jest --coverage",
+    "develop": "concurrently \"yarn api-server:develop\" \"yarn gatsby:develop\"",
+    "docs:build": "node ./expressSrc/scripts/createDocs.js",
+    "env:prod": "cross-env NODE_ENV=production && cross-env CI=true && cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,scss}\"",
+    "gatsby:build": "yarn env:prod && gatsby build --log-pages --no-uglify --no-colors",
     "gatsby:clean": "gatsby clean",
     "gatsby:develop": "gatsby develop -H 0.0.0.0 -p 8000",
-    "gatsby:build": "gatsby build --log-pages --no-uglify --no-colors",
-    "lint:fix": "yarn --silent lint --fix; exit 0",
-    "lint:styles-fix": "yarn --silent lint:styles --fix; exit 0",
-    "lint:styles": "stylelint --ignore-path .eslintignore \"./src/**/*.*(css|scss)\" --syntax scss",
     "postinstall": "patch-package",
     "pretest": "cross-env NODE_ENV=test",
-    "serve:develop": "nodemon ./expressSrc/index.js",
-    "serve:prod": "cross-env NODE_ENV=production && node ./expressSrc/index.js",
-    "env:prod": "cross-env NODE_ENV=production && cross-env CI=true && cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true",
-    "start": "node ./expressSrc/index.js",
+    "start:production": "cross-env NODE_ENV=production && node ./dist/main.js",
+    "start": "yarn build && yarn start:production",
     "test": "jest"
   },
   "dependencies": {
@@ -105,8 +105,9 @@
     "supertest": "6.1.1",
     "svg-parser": "2.0.4",
     "tailwindcss-line-clamp": "1.0.5",
-    "terser-webpack-plugin": "5.0.3",
-    "webpack-bugsnag-plugins": "1.6.0"
+    "terser-webpack-plugin": "4.2.3",
+    "webpack-bugsnag-plugins": "1.6.0",
+    "webpack-cli": "4.3.1"
   },
   "nodemonConfig": {
     "watch": [
