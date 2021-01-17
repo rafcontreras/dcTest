@@ -72,7 +72,7 @@ const getItem = async (request, response) => {
     const item = await find(itemId);
 
     if (item) {
-      return response.status(200).json({ item });
+      return response.status(200).send(item);
     }
 
     return response.sendStatus(404);

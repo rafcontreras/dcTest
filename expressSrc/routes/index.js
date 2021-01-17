@@ -26,6 +26,8 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Homepage for the Shopping List
+ *       404:
+ *         description: Not found
  */
 router.get("/*", (request, response, next) => {
   next();
@@ -39,11 +41,15 @@ router.get("/*", (request, response, next) => {
  *     description: Retrieve a shopping list of items. Can be used to populate a list of fake users when prototyping or testing an API.
  *     responses:
  *       200:
- *         description: A list of users.
+ *         description: A list of shopping items.
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Items'
+ *       404:
+ *         description: Not found
+ *       422:
+ *         description: Bad request
  */
 router.get("/api/v1/shopping-list", validateRequest, getItems);
 
@@ -58,6 +64,10 @@ router.get("/api/v1/shopping-list", validateRequest, getItems);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/NewItem'
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - $ref: '#/parameters/title'
  *     responses:
  *       201:
  *         description: Created
@@ -65,6 +75,10 @@ router.get("/api/v1/shopping-list", validateRequest, getItems);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
+ *       404:
+ *         description: Not found
+ *       422:
+ *         description: Bad request
  */
 router.post(
   "/api/v1/shopping-list/item",
@@ -99,6 +113,10 @@ router.post(
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
+ *       404:
+ *         description: Not found
+ *       422:
+ *         description: Bad request
  */
 router.put(
   "/api/v1/shopping-list/item/:itemId",
@@ -122,13 +140,23 @@ router.put(
  *         description: Unique Id of item to retrieve.
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Item'
  *     responses:
  *       200:
  *         description: Found
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Items'
+ *               $ref: '#/components/schemas/Item'
+ *       404:
+ *         description: Not found
+ *       422:
+ *         description: Bad request
  */
 router.get(
   "/api/v1/shopping-list/item/:itemId",
@@ -162,6 +190,10 @@ router.get(
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ItemsAndItem'
+ *       404:
+ *         description: Not found
+ *       422:
+ *         description: Bad request
  */
 router.delete(
   "/api/v1/shopping-list/item/:itemId",

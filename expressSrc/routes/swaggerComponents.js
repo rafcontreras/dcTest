@@ -8,7 +8,7 @@
  *       properties:
  *         items:
  *           type: array
- *           description: The shopping list item title.
+ *           description: A list of items.
  *           items:
  *             $ref: '#/components/schemas/Item'
  *     NewItem:
@@ -41,4 +41,15 @@
  *       allOf:
  *         - type: object
  *         - $ref: '#/components/schemas/Items'
+ * parameters:
+ *   title:
+ *     name: title
+ *     description: The shopping list item title.
+ *     in: formData
+ *     required: true
+ *     type: string
+ * securitySchemes:
+ *   basicAuth:
+ *     type: http
+ *     scheme: basic
  */

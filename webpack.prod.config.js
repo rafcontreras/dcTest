@@ -11,6 +11,7 @@ module.exports = {
     filename: "[name].js"
   },
   target: "node",
+  mode: "production",
   devtool: "#source-map",
   optimization: {
     minimize: true,

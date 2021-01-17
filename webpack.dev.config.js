@@ -11,6 +11,7 @@ module.exports = {
     filename: "[name].js"
   },
   target: "node",
+  mode: "development",
   module: {
     rules: [
       {
